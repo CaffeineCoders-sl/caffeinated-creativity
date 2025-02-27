@@ -54,14 +54,14 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				coffee: {
-					light: '#d2b48c',
-					DEFAULT: '#c8a273',
-					dark: '#8b5a2b'
+					light: '#333333',
+					DEFAULT: '#222222',
+					dark: '#000000'
 				},
-				cream: '#f5f5dc',
+				cream: '#f1f1f1',
 				code: {
-					blue: '#61dafb',
-					green: '#4caf50'
+					blue: '#8B5CF6',
+					green: '#10B981'
 				}
 			},
 			borderRadius: {
@@ -109,6 +109,18 @@ export default {
 				"coffee-drip": {
 					"0%": { height: "0%" },
 					"100%": { height: "100%" }
+				},
+				"glitch": {
+					"0%, 100%": { transform: "translate(0)" },
+					"20%": { transform: "translate(-2px, 2px)" },
+					"40%": { transform: "translate(-2px, -2px)" },
+					"60%": { transform: "translate(2px, 2px)" },
+					"80%": { transform: "translate(2px, -2px)" }
+				},
+				"gradient-shift": {
+					"0%": { backgroundPosition: "0% 50%" },
+					"50%": { backgroundPosition: "100% 50%" },
+					"100%": { backgroundPosition: "0% 50%" }
 				}
 			},
 			animation: {
@@ -121,11 +133,17 @@ export default {
 				"float": "float 5s ease-in-out infinite",
 				"pulse-subtle": "pulse-subtle 3s ease-in-out infinite",
 				"spin-slow": "spin-slow 10s linear infinite",
-				"coffee-drip": "coffee-drip 1.5s ease-in-out"
+				"coffee-drip": "coffee-drip 1.5s ease-in-out",
+				"glitch": "glitch 0.8s ease-in-out infinite",
+				"gradient-shift": "gradient-shift 10s ease infinite"
 			},
 			fontFamily: {
 				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				mono: ['Fira Code', 'ui-monospace', 'SFMono-Regular', 'monospace']
+			},
+			backgroundImage: {
+				'grid-pattern': 'linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)',
+				'noise': 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
 			}
 		}
 	},
