@@ -14,13 +14,13 @@ const ServicesPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="pt-20 min-h-screen"
+      className="pt-20 min-h-screen bg-white"
     >
       <div className="section-container">
         <div className="text-center mb-16">
           <div className="tag mb-3">What We Offer</div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our <span className="text-coffee-dark">Services</span></h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Our <span className="text-secondary">Services</span></h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Explore our comprehensive range of services designed to help your business thrive in the digital landscape.
           </p>
         </div>
@@ -28,7 +28,7 @@ const ServicesPage = () => {
         <div className="space-y-16">
           {/* Placeholder for Services page content */}
           <div className="text-center py-16">
-            <p className="text-muted-foreground italic">Full Services page content coming soon!</p>
+            <p className="text-gray-600 italic">Full Services page content coming soon!</p>
           </div>
         </div>
       </div>

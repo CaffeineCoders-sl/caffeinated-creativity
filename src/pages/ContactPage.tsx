@@ -15,12 +15,12 @@ const ContactPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="pt-20 min-h-screen"
+      className="pt-20 min-h-screen bg-white"
     >
       <div className="section-container text-center mb-8">
         <div className="tag mb-3">Get In Touch</div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact <span className="text-coffee-dark">Us</span></h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Contact <span className="text-secondary">Us</span></h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
           We'd love to hear from you. Reach out to our team with any questions or inquiries.
         </p>
       </div>

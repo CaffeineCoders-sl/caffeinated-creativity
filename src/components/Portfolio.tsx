@@ -32,12 +32,12 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="bg-muted/30 py-16 md:py-24">
+    <section id="portfolio" className="bg-gray-50 py-16 md:py-24">
       <div className="section-container">
         <div className="text-center mb-16">
           <div className="tag mb-3">Our Work</div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured <span className="text-coffee-dark">Projects</span></h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Featured <span className="text-secondary">Projects</span></h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Explore our recent work and see how we've helped clients transform their ideas into reality.
           </p>
         </div>
@@ -49,7 +49,7 @@ const Portfolio = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link to="/portfolio" className="btn-primary button-shine">
+          <Link to="/portfolio" className="btn-secondary button-shine">
             View All Projects
           </Link>
         </div>
@@ -67,7 +67,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   
   return (
     <div
-      className="group relative overflow-hidden rounded-lg bg-card border border-border transition-all duration-300 hover:shadow-lg"
+      className="group relative overflow-hidden rounded-lg bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -91,17 +91,17 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           ))}
         </div>
         
-        <h3 className="text-xl font-bold mb-2 transition-colors group-hover:text-coffee-dark">
+        <h3 className="text-xl font-bold mb-2 text-black transition-colors group-hover:text-secondary">
           {project.title}
         </h3>
         
-        <p className="text-muted-foreground mb-4">
+        <p className="text-gray-600 mb-4">
           {project.description}
         </p>
         
         <Link 
           to={project.link} 
-          className="inline-flex items-center text-coffee-dark font-medium hover:underline"
+          className="inline-flex items-center text-secondary font-medium hover:underline"
         >
           <span>View Project</span>
           <ArrowRight className={`ml-1 h-4 w-4 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />

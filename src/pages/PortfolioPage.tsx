@@ -88,7 +88,7 @@ const PortfolioPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="pt-20 min-h-screen relative"
+      className="pt-20 min-h-screen relative bg-white"
     >
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg z-0"></div>
@@ -111,7 +111,7 @@ const PortfolioPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 text-black"
           >
             Our <span className="gradient-text">Portfolio</span>
           </motion.h1>
@@ -120,7 +120,7 @@ const PortfolioPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-muted-foreground max-w-2xl mx-auto"
+            className="text-gray-600 max-w-2xl mx-auto"
           >
             Explore our past projects and discover how we've helped businesses achieve their digital goals.
           </motion.p>
@@ -167,19 +167,19 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   
   return (
     <div
-      className="overflow-hidden rounded-lg neo-card border border-white/10 h-full group relative"
+      className="overflow-hidden rounded-lg bg-white border border-gray-200 h-full group relative shadow-md hover:shadow-xl transition-shadow"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative h-52 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out grayscale hover:grayscale-0"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out"
           style={{
             backgroundImage: `url(${project.image})`,
             transform: isHovered ? 'scale(1.05)' : 'scale(1)'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         
         {/* Tags */}
         <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
@@ -192,11 +192,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
       
       <div className="p-5">
-        <h3 className="text-xl font-bold mb-2 transition-colors group-hover:text-secondary">
+        <h3 className="text-xl font-bold mb-2 text-black transition-colors group-hover:text-secondary">
           {project.title}
         </h3>
         
-        <p className="text-muted-foreground mb-4">
+        <p className="text-gray-600 mb-4">
           {project.description}
         </p>
         

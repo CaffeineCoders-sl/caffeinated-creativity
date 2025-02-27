@@ -40,10 +40,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
       {/* Background with grid pattern */}
       <div className="absolute inset-0 grid-bg z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent z-10"></div>
       </div>
       
       {/* Noise texture overlay */}
@@ -99,7 +99,7 @@ const Hero = () => {
             >
               Fueling Innovation
             </motion.div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black">
               <span className="relative inline-block">
                 <span className="relative z-10">Brewing Digital</span>
                 <span className="absolute bottom-0 left-0 w-full h-[8px] bg-secondary/30 -z-10 transform skew-x-12"></span>
@@ -122,7 +122,7 @@ const Hero = () => {
           </div>
           
           <motion.p 
-            className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0"
+            className="text-lg md:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -162,32 +162,32 @@ const Hero = () => {
         >
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-secondary via-secondary/50 to-secondary/80 rounded-lg blur opacity-30"></div>
-            <div className="neo-card neon-border relative rounded-lg p-6 shadow-2xl backdrop-blur-xl border-white/10">
+            <div className="bg-white relative rounded-lg p-6 shadow-2xl backdrop-blur-xl border border-gray-200">
               <div className="flex items-center mb-4">
                 <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <div className="ml-4 text-sm font-mono text-muted-foreground">main.ts</div>
+                <div className="ml-4 text-sm font-mono text-gray-500">main.ts</div>
               </div>
               
               <div className="space-y-1 font-mono text-sm">
                 <CodeLine delay={200}>
-                  <span className="text-secondary">class</span> <span className="text-white">CaffeineCoders</span> {'{'}
+                  <span className="text-secondary">class</span> <span className="text-black">CaffeineCoders</span> {'{'}
                 </CodeLine>
                 <CodeLine delay={700}>
                   <span className="pl-4 text-secondary">constructor</span>() {'{'}
                 </CodeLine>
                 <CodeLine delay={1200}>
-                  <span className="pl-8 text-muted-foreground">this</span>.<span className="text-white">energy</span> = <span className="text-secondary">'unlimited'</span>;
+                  <span className="pl-8 text-gray-600">this</span>.<span className="text-black">energy</span> = <span className="text-secondary">'unlimited'</span>;
                 </CodeLine>
                 <CodeLine delay={1700}>
-                  <span className="pl-8 text-muted-foreground">this</span>.<span className="text-white">experience</span> = <span className="text-secondary">'exceptional'</span>;
+                  <span className="pl-8 text-gray-600">this</span>.<span className="text-black">experience</span> = <span className="text-secondary">'exceptional'</span>;
                 </CodeLine>
                 <CodeLine delay={2200}>
                   <span className="pl-4">{'}'}</span>
                 </CodeLine>
                 <CodeLine delay={2700}>
-                  <span className="pl-4 text-secondary">brew</span>(<span className="text-muted-foreground">idea</span>) {'{'}
+                  <span className="pl-4 text-secondary">brew</span>(<span className="text-gray-600">idea</span>) {'{'}
                 </CodeLine>
                 <CodeLine delay={3200}>
                   <span className="pl-8 text-secondary">return</span> <span className="text-secondary">'amazing solution'</span>;

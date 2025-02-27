@@ -7,6 +7,38 @@
 
 @layer base {
   :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 50% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 40%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
@@ -34,38 +66,6 @@
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 0 0% 40%;
-
-    --radius: 0.5rem;
-  }
-
-  .light {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 3.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 270 50% 60%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-
-    --accent: 0 0% 90%;
-    --accent-foreground: 0 0% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
   }
 }
 
@@ -109,11 +109,11 @@
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg;
+    @apply backdrop-blur-sm bg-white/90 border border-white/20 shadow-lg;
   }
   
   .neo-card {
-    @apply bg-card border border-border/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)];
+    @apply bg-white border border-border/40 shadow-[0_8px_30px_rgb(0,0,0,0.05)];
   }
   
   .neon-border {
@@ -157,7 +157,7 @@
   }
   
   .button-shine {
-    @apply after:absolute after:content-[''] after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent hover:after:translate-x-[200%] after:transition-transform after:duration-1000 overflow-hidden relative;
+    @apply after:absolute after:content-[''] after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:via-black/5 after:to-transparent hover:after:translate-x-[200%] after:transition-transform after:duration-1000 overflow-hidden relative;
   }
   
   .text-outline {
@@ -302,8 +302,8 @@ html {
 /* Grid background */
 .grid-bg {
   background-size: 30px 30px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
 }
 
 /* Animated gradient */

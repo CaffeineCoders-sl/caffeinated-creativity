@@ -75,12 +75,12 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       >
         <div className="relative h-full group">
           <div className={`absolute inset-0 bg-gradient-to-r from-secondary to-secondary/50 rounded-xl blur transition-all duration-500 ${isHovered ? 'opacity-20' : 'opacity-0'}`}></div>
-          <div className="relative h-full flex flex-col p-6 neo-card rounded-lg border border-border/40 transition-all duration-300 hover:shadow-xl">
+          <div className="relative h-full flex flex-col p-6 bg-white rounded-lg border border-gray-200 transition-all duration-300 hover:shadow-xl">
             <div className="p-3 rounded-full bg-secondary/10 w-fit mb-4">
               {service.icon}
             </div>
-            <h3 className="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">{service.title}</h3>
-            <p className="text-muted-foreground flex-1">{service.description}</p>
+            <h3 className="text-xl font-bold mb-2 text-black group-hover:text-secondary transition-colors">{service.title}</h3>
+            <p className="text-gray-600 flex-1">{service.description}</p>
             <div className={`mt-4 text-secondary font-medium flex items-center transition-all duration-300 ${isHovered ? 'translate-x-2' : ''}`}>
               <span>Learn more</span>
               <svg
@@ -107,7 +107,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
 
 const Services = () => {
   return (
-    <section id="services" className="section-container relative">
+    <section id="services" className="section-container relative bg-white">
       <div className="absolute inset-0 grid-bg opacity-50 z-0"></div>
       
       <div className="relative z-10">
@@ -123,7 +123,7 @@ const Services = () => {
           </motion.div>
           
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold mb-4 text-black"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -133,7 +133,7 @@ const Services = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-muted-foreground max-w-2xl mx-auto"
+            className="text-gray-600 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

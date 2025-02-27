@@ -10,12 +10,12 @@ const NavLink = ({ to, children, className = '' }: { to: string; children: React
   return (
     <Link 
       to={to} 
-      className={`relative px-3 py-2 rounded-md transition-all duration-300 hover:text-coffee-dark
-        ${isActive ? 'text-coffee-dark font-medium' : 'text-foreground'} ${className}`}
+      className={`relative px-3 py-2 rounded-md transition-all duration-300 hover:text-secondary
+        ${isActive ? 'text-secondary font-medium' : 'text-gray-800'} ${className}`}
     >
       <span className="relative z-10">{children}</span>
       {isActive && (
-        <span className="absolute inset-0 bg-coffee-light/20 rounded-md -z-0"></span>
+        <span className="absolute inset-0 bg-secondary/10 rounded-md -z-0"></span>
       )}
     </Link>
   );
@@ -36,13 +36,13 @@ const Navbar = () => {
   
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10 overflow-hidden rounded-full bg-coffee transition-all duration-300 group-hover:shadow-lg">
+            <div className="relative w-10 h-10 overflow-hidden rounded-full bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
               <img 
                 src="/lovable-uploads/5c9e8331-194f-4d58-8b01-bb4dbb6018a7.png" 
                 alt="CaffeineCoders Logo" 
@@ -50,8 +50,8 @@ const Navbar = () => {
               />
             </div>
             <span className="text-xl font-bold tracking-tight inline-flex">
-              <span className="text-coffee-dark">Caffeine</span>
-              <span>Coders</span>
+              <span className="text-secondary">Caffeine</span>
+              <span className="text-black">Coders</span>
             </span>
           </Link>
           
@@ -64,7 +64,7 @@ const Navbar = () => {
             <NavLink to="/contact">Contact</NavLink>
             <Link 
               to="/contact" 
-              className="ml-4 btn-primary button-shine flex items-center space-x-2"
+              className="ml-4 btn-secondary button-shine flex items-center space-x-2"
             >
               <Coffee size={18} />
               <span>Let's Talk</span>
@@ -73,7 +73,7 @@ const Navbar = () => {
           
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-2 rounded-md hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-coffee"
+            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -84,7 +84,7 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-md animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-md animate-fade-in">
           <nav className="flex flex-col space-y-2 p-4 max-w-7xl mx-auto">
             <NavLink to="/" className="px-4 py-3">Home</NavLink>
             <NavLink to="/about" className="px-4 py-3">About</NavLink>
@@ -93,7 +93,7 @@ const Navbar = () => {
             <NavLink to="/contact" className="px-4 py-3">Contact</NavLink>
             <Link 
               to="/contact" 
-              className="mt-4 btn-primary w-full flex justify-center items-center space-x-2"
+              className="mt-4 btn-secondary w-full flex justify-center items-center space-x-2"
             >
               <Coffee size={18} />
               <span>Let's Talk</span>
