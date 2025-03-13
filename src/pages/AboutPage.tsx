@@ -1,12 +1,47 @@
-
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Code, PenTool, Users, Rocket, Zap, Settings, Coffee } from 'lucide-react';
 
 const AboutPage = () => {
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
+
+  // For interactive process steps
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+
+  // Add state to track logo loading status
+  const [logoLoaded, setLogoLoaded] = useState(false);
+  const [logoError, setLogoError] = useState(false);
+
+  // Define development process steps
+  const processSteps = [
+    {
+      icon: <PenTool size={24} />,
+      title: "Discovery & Design",
+      description: "We start by understanding your vision, goals, and requirements. Our designers then create wireframes and prototypes to visualize the solution.",
+      benefits: ["User-centered approach", "Iterative design process", "Clear project scope"]
+    },
+    {
+      icon: <Code size={24} />,
+      title: "Development",
+      description: "Our developers bring designs to life using the latest technologies and best practices. We maintain transparent communication throughout the build phase.",
+      benefits: ["Clean, efficient code", "Regular progress updates", "Rigorous testing"]
+    },
+    {
+      icon: <Rocket size={24} />,
+      title: "Deployment",
+      description: "We carefully launch your project, ensuring everything works perfectly in the live environment. Our deployment process minimizes downtime and risks.",
+      benefits: ["Thorough pre-launch testing", "Smooth transition", "Performance optimization"]
+    },
+    {
+      icon: <Settings size={24} />,
+      title: "Maintenance & Growth",
+      description: "Our relationship continues after launch with ongoing support, updates, and strategic improvements to help your digital product evolve.",
+      benefits: ["Regular security updates", "Performance monitoring", "Data-driven improvements"]
+    }
+  ];
 
   return (
     <motion.div
@@ -32,23 +67,43 @@ const AboutPage = () => {
               <div>
                 <h2 className="text-3xl font-bold mb-6 text-black">Who We Are</h2>
                 <p className="text-gray-600 mb-4">
-                  Founded in 2016, CaffeineCoders started as a small team of passionate developers with a shared vision: to create innovative software solutions that fuel business growth and deliver exceptional user experiences.
+                  Founded in 2024, CaffeineCoders started as a small team of passionate developers with a shared vision: to create innovative software solutions that fuel business growth and deliver exceptional user experiences.
                 </p>
                 <p className="text-gray-600 mb-4">
-                  Today, we've grown into a versatile team of developers, designers, strategists, and project managers who bring diverse skills and perspectives to every project we undertake.
+                  We're a young but rapidly growing team of developers, designers, strategists, and project managers who bring diverse skills and perspectives to every project we undertake.
                 </p>
                 <p className="text-gray-600">
                   Our name reflects our approach—we combine the energy and alertness that comes from a great cup of coffee with the precision and creativity of expert coding.
                 </p>
               </div>
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-secondary/30 to-secondary/10 rounded-lg blur opacity-30"></div>
-                <div className="relative rounded-lg overflow-hidden shadow-xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000"
-                    alt="Team collaboration" 
-                    className="w-full h-auto"
-                  />
+              <div className="relative flex items-center justify-center py-10">
+                {/* Decorative background effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#6b4226]/30 to-[#c0955a]/20 rounded-lg blur-xl opacity-50"></div>
+                
+                {/* Logo container */}
+                <div className="relative z-10 p-8 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center">
+                  {logoError ? (
+                    <div className="flex items-center gap-4">
+                      {/* Fallback logo if image fails to load */}
+                      <div className="text-secondary">
+                        <Coffee size={48} strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-bold tracking-tight">
+                          Caffeine<span className="text-secondary">Coders</span>
+                        </h3>
+                        <p className="text-sm text-gray-500">Brewing Digital Excellence</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <img 
+                      src="/images/logo.png" 
+                      alt="CaffeineCoders Logo" 
+                      className="max-w-full h-auto max-h-84 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
+                      onLoad={() => setLogoLoaded(true)}
+                      onError={() => setLogoError(true)}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -80,44 +135,86 @@ const AboutPage = () => {
             </div>
           </section>
           
-          {/* Team */}
-          <section>
-            <h2 className="text-3xl font-bold mb-10 text-center text-black">Meet Our Team</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Shamila Pramuditha",
-                  role: "CEO",
-                  image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300&h=300"
-                },
-                {
-                  name: "Samantha Lee",
-                  role: "CTO",
-                  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300&h=300"
-                },
-                {
-                  name: "Michael Chen",
-                  role: "Lead Developer",
-                  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300&h=300"
-                },
-                {
-                  name: "Olivia Rodriguez",
-                  role: "UX/UI Designer",
-                  image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300&h=300"
-                }
-              ].map((member, index) => (
-                <div key={index} className="text-center">
-                  <div className="relative mx-auto w-48 h-48 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-black">{member.name}</h3>
-                  <p className="text-gray-600">{member.role}</p>
-                </div>
-              ))}
+          {/* Our Process - New Section replacing Meet Our Team */}
+          <section className="py-16 relative">
+            <h2 className="text-3xl font-bold mb-6 text-center text-black">How We Work</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-center mb-16">
+              We follow a proven process that delivers exceptional results. Our methodology combines creativity, technical expertise, and strategic thinking to transform your ideas into reality.
+            </p>
+            
+            {/* Process Timeline - Fixed */}
+            <div className="max-w-5xl mx-auto relative">
+              {/* Connecting line - Fixed positioning */}
+              <div className="absolute top-[52px] left-0 right-0 h-1 bg-gray-200 z-0 hidden md:block"></div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                {processSteps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    onMouseEnter={() => setActiveStep(index)}
+                    onMouseLeave={() => setActiveStep(null)}
+                  >
+                    {/* Step number and icon - Improved */}
+                    <div className="flex flex-col items-center mb-6">
+                      <div className={`w-16 h-16 rounded-full flex items-center justify-center text-white mb-4 z-10 transition-all border-4 border-white ${
+                        activeStep === index 
+                          ? 'bg-secondary scale-110 shadow-lg' 
+                          : 'bg-gray-700'
+                      }`}>
+                        <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center border border-gray-200 shadow-sm">
+                          {index + 1}
+                        </span>
+                        {step.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-center">{step.title}</h3>
+                    </div>
+                    
+                    {/* Description */}
+                    <div className={`p-6 rounded-lg transition-all ${
+                      activeStep === index 
+                        ? 'bg-gray-50 shadow-md' 
+                        : 'bg-white'
+                    }`}>
+                      <p className="text-gray-600 mb-4">{step.description}</p>
+                      
+                      {/* Benefits list */}
+                      <ul className="space-y-1">
+                        {step.benefits.map((benefit, idx) => (
+                          <li key={idx} className="flex items-center text-sm">
+                            <Zap size={14} className="text-secondary mr-2 flex-shrink-0" />
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Show arrows between steps on mobile */}
+                    {index < processSteps.length - 1 && (
+                      <div className="flex justify-center mt-4 mb-4 md:hidden">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
+                          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                        </svg>
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Call to action */}
+            <div className="text-center mt-16">
+              <p className="text-gray-600 mb-4">Ready to start your project with us?</p>
+              <a 
+                href="/contact" 
+                className="inline-block px-8 py-3 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors"
+              >
+                Get in Touch
+              </a>
             </div>
           </section>
           
@@ -130,24 +227,24 @@ const AboutPage = () => {
               
               {[
                 {
-                  year: "2016",
+                  year: "2024",
                   title: "Foundation",
-                  description: "CaffeineCoders was founded with a mission to create innovative digital solutions."
+                  description: "CaffeineCoders was founded with a mission to create innovative digital solutions for modern businesses."
                 },
                 {
-                  year: "2018",
-                  title: "First Major Client",
-                  description: "Secured our first enterprise client and expanded our team to 10 members."
+                  year: "Q3 2024",
+                  title: "First Key Projects",
+                  description: "Successfully delivered our initial client projects and established our core service offerings."
                 },
                 {
-                  year: "2020",
-                  title: "International Expansion",
-                  description: "Opened our first international office and diversified our service offerings."
+                  year: "2025",
+                  title: "Team Expansion",
+                  description: "Planning to grow our talented team and extend our capabilities across new technology domains."
                 },
                 {
-                  year: "2023",
-                  title: "Today",
-                  description: "Continuing to grow and innovate with a team of 30+ professionals serving clients worldwide."
+                  year: "variable x",
+                  title: "Future Vision",
+                  description: "Aiming to become a recognized industry leader with a diverse portfolio of successful digital transformations."
                 }
               ].map((milestone, index) => (
                 <div key={index} className={`relative mb-12 ${index % 2 === 0 ? 'text-right left-timeline' : 'text-left right-timeline'}`}>

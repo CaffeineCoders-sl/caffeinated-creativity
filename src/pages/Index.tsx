@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { 
   Code, 
   Smartphone, 
@@ -51,35 +51,36 @@ const Index = () => {
   const detailsRef = useRef(null);
   const isDetailsInView = useInView(detailsRef, { once: true, margin: "-100px" });
 
-  // Featured services data for homepage teaser
-  const featuredServices = [
+  // Core service offerings - with enhanced descriptions
+  const coreServices = [
     {
-      icon: <Code className="text-white" size={24} />,
       title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies.",
-      color: "from-blue-600 to-indigo-800",
-      link: "/services#web-dev"
+      description: "Custom websites and web applications that meet modern web standards, provide excellent user experiences, and adapt to your business needs. We build solutions that are performant, secure, and scalable.",
+      technologies: "React, Vue, Node.js, Django, Laravel",
+      icon: <Code size={28} className="text-black" />,
+      accent: "left-[10%] w-[30%] bg-blue-100"
     },
     {
-      icon: <Smartphone className="text-white" size={24} />,
-      title: "Mobile Apps",
-      description: "Native and cross-platform mobile applications for iOS and Android.",
-      color: "from-emerald-500 to-teal-700",
-      link: "/services#mobile-apps"
+      title: "Mobile Applications",
+      description: "Native and cross-platform mobile solutions designed for engagement and usability. From concept to App Store, we deliver apps that users love and that drive measurable business results.",
+      technologies: "React Native, Flutter, Swift, Kotlin",
+      icon: <Smartphone size={28} className="text-black" />,
+      accent: "left-[25%] w-[45%] bg-emerald-100"
     },
     {
-      icon: <Brain className="text-white" size={24} />,
-      title: "AI Solutions",
-      description: "Intelligent systems that learn, adapt, and solve complex problems.",
-      color: "from-purple-600 to-violet-800",
-      link: "/services#ai-ml"
+      title: "AI & Machine Learning",
+      description: "Intelligent systems that transform raw data into business insights. We help you implement AI solutions that solve complex problems, automate processes, and unlock new opportunities.",
+      technologies: "TensorFlow, PyTorch, NLP, Computer Vision",
+      icon: <Brain size={28} className="text-black" />,
+      accent: "left-[15%] w-[25%] bg-purple-100"
     },
     {
-      icon: <Paintbrush className="text-white" size={24} />,
-      title: "UI/UX Design",
-      description: "User-centered design that creates meaningful and relevant experiences.",
-      color: "from-rose-500 to-pink-700",
-      link: "/services#ui-design"
+      title: "SaaS Solutions",
+      description:
+        "Scalable and secure software-as-a-service solutions designed for rapid deployment and seamless integration. Our SaaS offerings empower businesses with flexible, subscription-based models to reduce overhead and drive ROI.",
+      technologies: "Cloud, Microservices, API Integration, DevOps",
+      icon: <Globe size={28} className="text-black" />,
+      accent: "left-[5%] w-[40%] bg-indigo-100"
     }
   ];
 
@@ -282,91 +283,222 @@ const Index = () => {
     >
       <Hero />
       
-      {/* Featured Services Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.span 
-              className="inline-block px-4 py-1 rounded-full bg-black/5 text-black/70 text-sm font-medium mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+      {/* Innovative Text Information Field - replacing simple layout */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        {/* Background pattern elements */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="grid grid-cols-6 h-full">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="border-r border-black"></div>
+            ))}
+          </div>
+          <div className="grid grid-rows-6 w-full absolute inset-0">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="border-b border-black"></div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Floating elements for visual interest */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute bg-gray-50 rounded-full"
+              style={{
+                width: `${80 + Math.random() * 120}px`,
+                height: `${80 + Math.random() * 120}px`,
+                left: `${20 + Math.random() * 60}%`,
+                top: `${20 + Math.random() * 60}%`,
+                opacity: 0.4,
+              }}
+              animate={{
+                x: [0, Math.random() * 40 - 20],
+                y: [0, Math.random() * 40 - 20],
+              }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 10 + Math.random() * 10,
+              }}
+            />
+          ))}
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            {/* Section headline with creative typography */}
+            <motion.div 
+              className="relative inline-block mb-2"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              OUR EXPERTISE
-            </motion.span>
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold mb-6"
+              <span className="inline-block px-4 py-1 rounded-full bg-black/5 text-black/70 text-sm font-medium">
+                OUR SERVICES
+              </span>
+            </motion.div>
+            
+            <motion.div
+              className="relative z-10 mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
             >
-              Innovative Digital Services
-            </motion.h2>
+              <h2 className="text-5xl md:text-6xl font-bold leading-tight">
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-black tracking-tight">Digital Solutions</span>
+                  <motion.span 
+                    className="absolute -bottom-2 left-0 h-3 bg-gray-100 w-full" 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                  />
+                </span>{" "}
+                for Modern Businesses
+              </h2>
+            </motion.div>
+            
             <motion.p 
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              className="text-xl text-black/80 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
             >
-              We combine creativity and technical expertise to deliver exceptional digital solutions.
+              We combine technical expertise and creative thinking to deliver exceptional 
+              digital products that help businesses thrive in today's competitive landscape.
             </motion.p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredServices.map((service, index) => (
-              <motion.div
-                key={index}
-                className="relative overflow-hidden group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+          </motion.div>
+
+          {/* Innovative Service Display */}
+          <div className="space-y-32">
+            {coreServices.map((service, idx) => (
+              <motion.div 
+                key={idx}
+                className={`relative ${idx % 2 === 0 ? "" : "md:text-right"}`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                whileHover={{ y: -8 }}
+                transition={{ duration: 0.8 }}
               >
-                <Link to={service.link} className="block h-full">
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
-                    <div className={`w-full h-24 bg-gradient-to-r ${service.color} p-6 flex items-center`}>
-                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                        {service.icon}
+                {/* Background accent shape */}
+                <motion.div 
+                  className={`absolute h-[80%] top-[10%] ${service.accent} rounded-full opacity-[0.15] blur-xl`}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 0.15 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+                
+                {/* Service Number - Large background */}
+                <div className={`absolute top-0 ${idx % 2 === 0 ? 'left-0' : 'right-0'} -z-0 leading-none`}>
+                  <span className="text-[180px] font-black text-black opacity-[0.03]">
+                    {(idx + 1).toString().padStart(2, '0')}
+                  </span>
+                </div>
+
+                <div className={`max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative`}>
+                  {/* Icon and Title Section */}
+                  <div className={`md:col-span-4 flex ${idx % 2 === 0 ? 'md:justify-start' : 'md:justify-end md:order-last'}`}>
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      className={`relative ${idx % 2 === 0 ? 'text-left' : 'text-right'}`}
+                    >
+                      <div className="bg-white shadow-xl rounded-xl p-6 inline-block">
+                        <div className="w-16 h-16 flex items-center justify-center mb-4">
+                          {service.icon}
+                        </div>
+                        
+                        <h3 className="text-3xl font-bold text-black relative mb-1">
+                          {service.title}
+                        </h3>
+                        
+                        <div className="w-8 h-1 bg-black mx-auto mt-2 mb-4"></div>
+                        
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {service.technologies.split(', ').map((tech, i) => (
+                            <motion.span 
+                              key={i}
+                              className="inline-block text-xs font-medium bg-gray-100 px-2 py-1 rounded-md text-black"
+                              initial={{ opacity: 0, x: idx % 2 === 0 ? -10 : 10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: 0.3 + (i * 0.05) }}
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    <div className="p-6 flex-grow">
-                      <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                      <p className="text-gray-600 mb-4">{service.description}</p>
-                    </div>
-                    <div className="px-6 pb-6">
-                      <div className="flex items-center text-black group-hover:text-blue-600 transition-colors">
-                        <span className="font-medium">Learn more</span>
-                        <ChevronRight size={16} className="ml-1 group-hover:ml-3 transition-all duration-300" />
-                      </div>
-                    </div>
+                    </motion.div>
                   </div>
-                </Link>
+
+                  {/* Description Section */}
+                  <motion.div 
+                    className={`md:col-span-8 ${idx % 2 === 0 ? '' : 'md:text-right'}`}
+                    initial={{ opacity: 0, x: idx % 2 === 0 ? 40 : -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
+                  >
+                    <div className="relative">
+                      {/* Decorative elements */}
+                      <div className={`absolute ${idx % 2 === 0 ? 'left-0' : 'right-0'} top-0 w-12 h-12 border-t-2 border-l-2 border-black opacity-10 ${idx % 2 === 0 ? '' : 'rotate-90'}`}></div>
+                      
+                      <div className={`pl-8 ${idx % 2 === 0 ? 'border-l-2' : 'border-r-2 pr-8'} border-black/10 py-4`}>
+                        <p className="text-xl text-black leading-relaxed mb-8">
+                          {service.description.split('. ').map((sentence, i, arr) => (
+                            <span key={i}>
+                              {i === 0 ? <strong>{sentence}.</strong> : `${sentence}${i < arr.length - 1 ? '.' : ''}`}
+                              {i < arr.length - 1 && ' '}
+                            </span>
+                          ))}
+                        </p>
+                      </div>
+                      
+                      <div className={`absolute ${idx % 2 === 0 ? 'right-0' : 'left-0'} bottom-0 w-12 h-12 border-b-2 border-r-2 border-black opacity-10 ${idx % 2 === 0 ? 'rotate-180' : 'rotate-90'}`}></div>
+                    </div>
+                  </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
           
           <motion.div 
-            className="text-center mt-16"
+            className="text-center mt-28"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
           >
             <Link 
               to="/services" 
-              className="inline-flex items-center px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-black/80 transition-colors"
+              className="group inline-flex items-center relative overflow-hidden px-10 py-5 border-2 border-black rounded-full"
             >
-              <span>Explore All Services</span>
-              <ArrowRight size={18} className="ml-2" />
+              <span className="relative z-10 text-lg font-medium text-black group-hover:text-white transition-colors duration-500">
+                Explore Our Services In Depth
+              </span>
+              <ArrowRight size={20} className="ml-3 relative z-10 text-black group-hover:text-white transition-colors duration-500" />
+              
+              <span className="absolute inset-0 w-full h-full bg-white group-hover:bg-black transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500"></span>
             </Link>
           </motion.div>
         </div>
       </section>
-
+      
       {/* Detailed Section with Beautiful UI */}
       <section ref={detailsRef} className="py-32 bg-gradient-to-br from-black to-gray-900 text-white relative overflow-hidden">
         {/* Background elements */}

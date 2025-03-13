@@ -18,7 +18,7 @@ const ServiceCategoryButton: React.FC<ServiceCategoryButtonProps> = ({
   
   return (
     <button
-      onClick={() => setActiveCategory(category as any)}
+      onClick={() => setActiveCategory(category)}
       className={`px-5 py-2 rounded-full transition-all duration-300 flex items-center space-x-2 ${
         isActive
           ? 'bg-black text-white shadow-md scale-105'

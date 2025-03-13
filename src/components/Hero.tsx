@@ -121,22 +121,118 @@ const Hero = () => {
               Engineering exceptional <span className="text-black">digital experiences</span>
             </h1>
             
-            {/* Simple text description replacing feature cards */}
-            <div className="mb-20 max-w-4xl">
-              <p className="text-xl text-black mb-8 leading-relaxed">
-                We transform complex business challenges into powerful software solutions that drive real business impact. 
-                Our expert team designs, builds, and scales applications with a focus on your unique requirements and future growth.
-              </p>
+            {/* Highly innovative text layout with creative typography */}
+            <div className="mb-20 relative">
+              {/* Vertical side text */}
+              <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 transform -rotate-90 origin-center">
+                <div className="text-sm tracking-[0.25em] uppercase font-bold text-black/30">
+                  Digital Transformation
+                </div>
+              </div>
               
-              <p className="text-xl text-black mb-8 leading-relaxed">
-                With deep expertise across multiple industries and technologies, we deliver custom software that evolves with your business. 
-                Our collaborative approach ensures solutions that are not only tailored to your needs but optimized for performance and security.
-              </p>
-              
-              <p className="text-xl text-black leading-relaxed">
-                From enterprise-grade security to user-centered design, we build applications that your team will love to use and your 
-                customers will trust. Our balanced approach to aesthetics and functionality creates digital experiences that truly stand out.
-              </p>
+              {/* Main content area with innovative layout */}
+              <div className="max-w-5xl mx-auto relative">
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-40 h-40 border-t-2 border-r-2 border-black opacity-10"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 border-b-2 border-l-2 border-black opacity-10"></div>
+                
+                {/* First section - Staggered headline */}
+                <div className="mb-16 pl-0 md:pl-20 relative">
+                  <div className="absolute top-0 left-0 h-full w-1 bg-black hidden md:block"></div>
+                  <h2 className="text-5xl tracking-tight font-black text-black mb-1">We transform</h2>
+                  <h2 className="text-3xl tracking-tight ml-0 md:ml-12 font-light text-black/80 mb-1">complex business challenges</h2>
+                  <h2 className="text-4xl tracking-tight ml-0 md:ml-24 font-extrabold text-black mb-8">into powerful software solutions</h2>
+                  
+                  <p className="text-black text-lg md:text-xl ml-0 md:ml-12 max-w-2xl">
+                    Our expert team designs, builds, and scales applications with a focus 
+                    on your unique requirements and future growth.
+                  </p>
+                </div>
+                
+                {/* Second section - Split content with asymmetric layout */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-20">
+                  {/* Left column */}
+                  <div className="md:col-span-7 relative bg-gray-50 p-6 rounded-lg">
+                    <span className="text-9xl absolute bottom-0 right-4 font-black text-black opacity-[0.03] leading-none">01</span>
+                    <div className="relative z-10">
+                      <h3 className="text-xl font-bold text-black mb-4 flex items-center">
+                        <span className="inline-block w-8 h-8 bg-black/80 text-white rounded-full text-xs flex items-center justify-center mr-2">01</span>
+                        Custom Software Development
+                      </h3>
+                      <p className="ml-10 text-black">
+                        With deep expertise across multiple industries and technologies, we deliver 
+                        <mark className="bg-white px-2 font-semibold mx-1">custom software</mark> 
+                        that evolves with your business. Our collaborative approach ensures 
+                        solutions that are tailored to your needs.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Middle emphasize content */}
+                  <div className="flex items-center justify-center md:col-span-1">
+                    <div className="w-px h-full bg-black/20 hidden md:block"></div>
+                    <div className="h-px w-full bg-black/20 md:hidden"></div>
+                  </div>
+                  
+                  {/* Right column - pull quote */}
+                  <div className="md:col-span-4 flex flex-col justify-center relative">
+                    <span className="text-7xl opacity-80 absolute text-black/10 font-black left-0 top-0">"</span>
+                    <p className="text-2xl font-light italic text-black leading-tight ml-6 mt-6 relative z-10">
+                      Built for <span className="font-black">tomorrow</span>,<br />
+                      delivered <span className="font-black">today</span>.
+                    </p>
+                    <span className="ml-auto mr-4 text-7xl opacity-80 absolute text-black/10 font-black right-0 bottom-0">"</span>
+                  </div>
+                </div>
+                
+                {/* Third section - Grid matrix with keywords */}
+                <div className="mb-20 overflow-hidden relative">
+                  {/* Background pattern */}
+                  <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-4 opacity-[0.02]">
+                    {Array.from({ length: 16 }).map((_, i) => (
+                      <div key={i} className="border border-black h-full w-full"></div>
+                    ))}
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10">
+                      {['Security', 'Performance', 'Design', 'Scalability', 'Innovation', 'Reliability'].map((word, idx) => (
+                        <div key={idx} className="text-center px-2">
+                          <div className={`text-lg sm:text-xl font-black text-black tracking-widest uppercase ${
+                            idx % 2 === 0 ? 'transform -rotate-2' : 'transform rotate-2'
+                          }`}>
+                            {word}
+                          </div>
+                          <div className={`h-0.5 w-full bg-black mt-1 ${
+                            idx % 2 === 0 ? 'transform -rotate-2' : 'transform rotate-2'
+                          }`}></div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="text-xl text-black leading-relaxed max-w-3xl mx-auto relative p-6 border-l-2 border-r-2 border-transparent">
+                      <div className="absolute left-0 top-0 w-8 h-8 border-l-2 border-t-2 border-black"></div>
+                      <div className="absolute right-0 top-0 w-8 h-8 border-r-2 border-t-2 border-black"></div>
+                      <div className="absolute left-0 bottom-0 w-8 h-8 border-l-2 border-b-2 border-black"></div>
+                      <div className="absolute right-0 bottom-0 w-8 h-8 border-r-2 border-b-2 border-black"></div>
+                      
+                      From enterprise-grade security to user-centered design, we build applications 
+                      that your team will love to use and your customers will trust. Our balanced approach 
+                      creates digital experiences that truly <span className="italic">stand out</span>.
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Fourth section - Final statement with large typography */}
+                <div className="text-center">
+                  <p className="inline-block text-3xl sm:text-4xl font-black text-black leading-tight relative">
+                    <span className="absolute -left-2 top-0 h-full w-1 bg-black"></span>
+                    Transforming ideas<br/>into exceptional software
+                    <span className="absolute -right-2 bottom-0 h-full w-1 bg-black"></span>
+                  </p>
+                </div>
+              </div>
             </div>
             
             {/* Key value propositions in 2 columns on larger screens */}

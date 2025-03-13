@@ -25,7 +25,7 @@ const Toaster = () => <div id="toaster-placeholder"></div>;
 const Sonner = () => <div id="sonner-placeholder"></div>;
 const TooltipProvider = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
-import ServiceCategoryDebug from './components/ServiceCategoryDebug';
+
 
 const queryClient = new QueryClient();
 
@@ -69,7 +69,7 @@ const AppContent = () => {
       <Footer />
       
       {/* Add debug component only in development */}
-      {process.env.NODE_ENV === 'development' && <ServiceCategoryDebug />}
+    
     </div>
   );
 };
