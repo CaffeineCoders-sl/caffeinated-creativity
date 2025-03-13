@@ -1,212 +1,208 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-interface CodeLineProps {
-  delay: number;
-  children: React.ReactNode;
-}
-
-const CodeLine = ({ delay, children }: CodeLineProps) => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), delay);
-    return () => clearTimeout(timer);
-  }, [delay]);
-
-  return (
-    <div
-      className={`font-mono text-sm md:text-base text-left mb-2 opacity-0 transform translate-y-2 transition-all duration-500 ${
-        visible ? 'opacity-100 translate-y-0' : ''
-      }`}
-    >
-      {children}
-    </div>
-  );
-};
+import { 
+  ArrowRight, Code, CheckCircle, Zap, Clock, Cloud, 
+  GitBranch, Smartphone, Link2, Layout, Shield,
+  Sparkles, Lightbulb, UserCheck
+} from 'lucide-react';
 
 const Hero = () => {
-  const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Innovation', 'Efficiency', 'Solutions', 'Excellence'];
+  // Core expertise areas with descriptions - expanded to 8 items (2 rows)
+  const expertise = [
+    { 
+      name: 'Custom Development',
+      icon: <Code size={24} className="text-black" />,
+      description: 'Tailor-made applications designed specifically for your unique business requirements.'
+    },
+    { 
+      name: 'AI Integration',
+      icon: <Zap size={24} className="text-black" />,
+      description: 'Intelligent features that transform your data into actionable insights and automation.'
+    },
+    { 
+      name: 'Cloud Architecture',
+      icon: <Cloud size={24} className="text-black" />,
+      description: 'Scalable infrastructure that grows with your business and optimizes operational costs.'
+    },
+    { 
+      name: 'Rapid Delivery',
+      icon: <Clock size={24} className="text-black" />,
+      description: 'Efficient development processes that bring your ideas to market faster.'
+    },
+    // New expertise items
+    { 
+      name: 'DevOps Automation',
+      icon: <GitBranch size={24} className="text-black" />,
+      description: 'Streamlined deployment pipelines that automate testing, integration, and delivery for faster releases.'
+    },
+    { 
+      name: 'Mobile Development',
+      icon: <Smartphone size={24} className="text-black" />,
+      description: 'Native and cross-platform mobile applications that provide seamless experiences across all devices.'
+    },
+    { 
+      name: 'API Integration',
+      icon: <Link2 size={24} className="text-black" />,
+      description: 'Connecting systems and services through robust APIs that enable powerful data exchange and functionality.'
+    },
+    { 
+      name: 'UI/UX Design',
+      icon: <Layout size={24} className="text-black" />,
+      description: 'User-centered design that creates intuitive, engaging, and accessible digital experiences.'
+    }
+  ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // Updated tech stack array with all requested technologies
+  const techStack = [
+    'React', 
+    'Angular',
+    'Node.js', 
+    'Python', 
+    'AWS', 
+    'TypeScript', 
+    '.NET',
+    'Spring Boot',
+    'PHP',
+    'TensorFlow',
+    'Docker'
+  ];
+  
+  // Features for checklist
+  const features = [
+    {
+      title: "Transformative Solutions",
+      icon: <Sparkles size={24} className="text-black" />,
+      headline: "We transform complex business challenges into powerful software solutions.",
+      benefits: [
+        "Custom-built applications for your specific business needs",
+        "Scalable architecture that grows with your business",
+        "Integrated systems that streamline your operations"
+      ]
+    },
+    {
+      title: "Future-Ready Engineering",
+      icon: <Lightbulb size={24} className="text-black" />,
+      headline: "With deep expertise across multiple industries and technologies.",
+      benefits: [
+        "Future-proof technologies that evolve with your needs",
+        "Collaborative approach for tailored solutions",
+        "Optimized for performance and scalability"
+      ]
+    },
+    {
+      title: "Security & Compliance",
+      icon: <Shield size={24} className="text-black" />,
+      headline: "Enterprise-grade security built into every solution we deliver.",
+      benefits: [
+        "Robust security measures against modern threats",
+        "Compliance with industry standards and regulations",
+        "Data protection that builds customer trust"
+      ]
+    },
+    {
+      title: "User-Centered Design",
+      icon: <UserCheck size={24} className="text-black" />,
+      headline: "Beautiful interfaces that prioritize the user experience.",
+      benefits: [
+        "Intuitive interfaces that users love to engage with",
+        "Accessibility built into every design decision",
+        "Balanced aesthetics and functionality"
+      ]
+    }
+  ];
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
-      {/* Background with grid pattern */}
-      <div className="absolute inset-0 grid-bg z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent z-10"></div>
-      </div>
-      
-      {/* Noise texture overlay */}
-      <div className="noise-overlay"></div>
-      
-      {/* Animated particles */}
-      <div className="absolute w-full h-full overflow-hidden pointer-events-none z-0">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-secondary/70"
-            initial={{ 
-              x: Math.random() * 100 + "%", 
-              y: Math.random() * 100 + "%", 
-              opacity: Math.random() * 0.5 + 0.3 
-            }}
-            animate={{ 
-              x: Math.random() * 100 + "%", 
-              y: Math.random() * 100 + "%",
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{ 
-              duration: 15 + Math.random() * 20, 
-              repeat: Infinity,
-              ease: "linear",
-              opacity: {
-                duration: 3 + Math.random() * 3,
-                repeat: Infinity,
-                yoyo: true
-              }
-            }}
-            style={{
-              width: (2 + Math.random() * 4) + "px",
-              height: (2 + Math.random() * 4) + "px",
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 z-10">
-        <motion.div 
-          className="flex-1 space-y-6 text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="space-y-2">
-            <motion.div 
-              className="tag inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase bg-secondary/20 text-secondary rounded-full"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              Fueling Innovation
-            </motion.div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black">
-              <span className="relative inline-block">
-                <span className="relative z-10">Brewing Digital</span>
-                <span className="absolute bottom-0 left-0 w-full h-[8px] bg-secondary/30 -z-10 transform skew-x-12"></span>
-              </span>
-              {" "}
-              <span className="gradient-text font-bold relative">
-                {words.map((word, i) => (
-                  <span
-                    key={word}
-                    className={`absolute transition-opacity duration-500 ${
-                      i === currentWord ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  >
-                    {word}
-                  </span>
-                ))}
-                <span className="invisible">{words[0]}</span>
-              </span>
+    <section className="pt-28 pb-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Full-width hero content - with extra space above the heading */}
+          <div className="max-w-3xl mx-auto lg:max-w-none mb-16">
+            <h1 className="text-5xl sm:text-6xl font-bold text-black mb-12 leading-tight">
+              Engineering exceptional <span className="text-black">digital experiences</span>
             </h1>
-          </div>
-          
-          <motion.p 
-            className="text-lg md:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            We infuse energy and creativity into every line of code, crafting solutions that transform ideas into powerful digital experiences.
-          </motion.p>
-          
-          <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          >
-            <Link 
-              to="/services" 
-              className="btn-secondary button-shine w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-3 text-base"
-            >
-              <Code size={18} />
-              <span>Explore Services</span>
-            </Link>
-            <Link 
-              to="/portfolio" 
-              className="btn-ghost w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-3 text-base group"
-            >
-              <span>View Our Work</span>
-              <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </motion.div>
-        
-        {/* Animated code block */}
-        <motion.div 
-          className="flex-1 max-w-md mx-auto lg:mx-0"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-secondary via-secondary/50 to-secondary/80 rounded-lg blur opacity-30"></div>
-            <div className="bg-white relative rounded-lg p-6 shadow-2xl backdrop-blur-xl border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <div className="ml-4 text-sm font-mono text-gray-500">main.ts</div>
-              </div>
+            
+            {/* Simple text description replacing feature cards */}
+            <div className="mb-20 max-w-4xl">
+              <p className="text-xl text-black mb-8 leading-relaxed">
+                We transform complex business challenges into powerful software solutions that drive real business impact. 
+                Our expert team designs, builds, and scales applications with a focus on your unique requirements and future growth.
+              </p>
               
-              <div className="space-y-1 font-mono text-sm">
-                <CodeLine delay={200}>
-                  <span className="text-secondary">class</span> <span className="text-black">CaffeineCoders</span> {'{'}
-                </CodeLine>
-                <CodeLine delay={700}>
-                  <span className="pl-4 text-secondary">constructor</span>() {'{'}
-                </CodeLine>
-                <CodeLine delay={1200}>
-                  <span className="pl-8 text-gray-600">this</span>.<span className="text-black">energy</span> = <span className="text-secondary">'unlimited'</span>;
-                </CodeLine>
-                <CodeLine delay={1700}>
-                  <span className="pl-8 text-gray-600">this</span>.<span className="text-black">experience</span> = <span className="text-secondary">'exceptional'</span>;
-                </CodeLine>
-                <CodeLine delay={2200}>
-                  <span className="pl-4">{'}'}</span>
-                </CodeLine>
-                <CodeLine delay={2700}>
-                  <span className="pl-4 text-secondary">brew</span>(<span className="text-gray-600">idea</span>) {'{'}
-                </CodeLine>
-                <CodeLine delay={3200}>
-                  <span className="pl-8 text-secondary">return</span> <span className="text-secondary">'amazing solution'</span>;
-                </CodeLine>
-                <CodeLine delay={3700}>
-                  <span className="pl-4">{'}'}</span>
-                </CodeLine>
-                <CodeLine delay={4200}>{'}'}</CodeLine>
-              </div>
+              <p className="text-xl text-black mb-8 leading-relaxed">
+                With deep expertise across multiple industries and technologies, we deliver custom software that evolves with your business. 
+                Our collaborative approach ensures solutions that are not only tailored to your needs but optimized for performance and security.
+              </p>
               
-              {/* Blinking cursor */}
-              <div className="mt-2 h-5 w-2 bg-secondary animate-pulse-subtle"></div>
+              <p className="text-xl text-black leading-relaxed">
+                From enterprise-grade security to user-centered design, we build applications that your team will love to use and your 
+                customers will trust. Our balanced approach to aesthetics and functionality creates digital experiences that truly stand out.
+              </p>
+            </div>
+            
+            {/* Key value propositions in 2 columns on larger screens */}
+            <div className="grid md:grid-cols-2 gap-x-16 gap-y-4 mb-10">
+              {['Industry-leading expertise across the full technology stack', 
+                'Proven track record of delivering on time and within budget',
+                'Strategic partnership approach focused on your long-term success',
+                'Continuous innovation that keeps you ahead of the competition'].map((point, idx) => (
+                <div key={idx} className="flex items-start">
+                  <CheckCircle size={20} className="text-black mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-black font-medium">{point}</p>
+                </div>
+              ))}
+            </div>
+            
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-4 mt-8">
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-md shadow-lg hover:bg-gray-900 transition-colors font-medium text-lg"
+              >
+                Start Your Project
+                <ArrowRight size={18} />
+              </Link>
+              <Link 
+                to="/portfolio" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border-2 border-black text-black rounded-md hover:bg-gray-50 transition-colors font-medium text-lg"
+              >
+                View Our Work
+              </Link>
             </div>
           </div>
           
-          {/* Decorative elements */}
-          <div className="hidden md:block absolute right-0 -bottom-20 w-24 h-24 bg-secondary/10 rounded-full blur-3xl"></div>
-          <div className="hidden md:block absolute right-20 -top-10 w-20 h-20 bg-secondary/10 rounded-full blur-3xl"></div>
-        </motion.div>
+          {/* HORIZONTAL Expertise areas - full width - now with 2 rows */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-black mb-8 text-center">Our Services & Expertise</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {expertise.map((item, idx) => (
+                <div key={idx} className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-white rounded-lg shadow-sm">
+                      {item.icon}
+                    </div>
+                    <h3 className="font-bold text-black">{item.name}</h3>
+                  </div>
+                  <p className="text-black">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Full-width tech showcase - Updated */}
+          <div className="pt-12 border-t border-gray-100">
+            <h3 className="text-xl font-bold text-black mb-6">Our Tech Stack</h3>
+            <div className="flex flex-wrap gap-4">
+              {techStack.map((tech, idx) => (
+                <div 
+                  key={idx} 
+                  className="px-4 py-2 bg-gray-50 rounded-lg border border-gray-100 text-black font-medium hover:shadow-sm transition-shadow"
+                >
+                  {tech}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

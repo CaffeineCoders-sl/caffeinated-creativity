@@ -1,7 +1,6 @@
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Coffee, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const NavLink = ({ to, children, className = '' }: { to: string; children: React.ReactNode; className?: string }) => {
   const location = useLocation();
@@ -21,18 +20,20 @@ const NavLink = ({ to, children, className = '' }: { to: string; children: React
   );
 };
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+interface NavbarProps {
+  isDarkBackground?: boolean;
+  isScrolled?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isDarkBackground = false, isScrolled = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
   
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Color adjustments for dark background
+  const textColor = (isDarkBackground && !isScrolled) ? 'text-white' : 'text-black';
+  const logoTextColor = (isDarkBackground && !isScrolled) 
+    ? 'text-white dark:text-white' 
+    : 'text-secondary';
   
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -40,40 +41,56 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Text Only */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10 overflow-hidden rounded-full bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
-              <img 
-                src="/lovable-uploads/5c9e8331-194f-4d58-8b01-bb4dbb6018a7.png" 
-                alt="CaffeineCoders Logo" 
-                className="w-full h-full object-cover scale-[0.7] transform group-hover:scale-[0.75] transition-transform duration-300"
-              />
-            </div>
-            <span className="text-xl font-bold tracking-tight inline-flex">
-              <span className="text-secondary">Caffeine</span>
-              <span className="text-black">Coders</span>
+          <div className="w-10 h-10 overflow-hidden rounded-full bg-gray-100 transition-all duration-300 group-hover:shadow-lg border border-gray-200">
+                <img 
+                  src="/lovable-uploads/5c9e8331-194f-4d58-8b01-bb4dbb6018a7.png" 
+                  alt="CaffeineCoders Logo" 
+                  className="w-full h-full object-cover scale-[0.7] transform group-hover:scale-[0.75] transition-transform duration-300"
+                />
+              </div>
+            <span className={`text-xl font-bold tracking-tight ${textColor}`}>
+              <span className={logoTextColor}>Caffeine</span>
+              <span>Coders</span>
             </span>
           </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/services">Services</NavLink>
-            <NavLink to="/portfolio">Portfolio</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+              <Link
+                key={item}
+                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                className={`relative px-3 py-2 rounded-md transition-all duration-300 
+                  ${location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) 
+                    ? 'font-medium' : ''} 
+                  ${isDarkBackground && !isScrolled 
+                    ? 'text-white hover:text-white/80' 
+                    : 'text-gray-800 hover:text-black'}`}
+              >
+                {item}
+              </Link>
+            ))}
             <Link 
               to="/contact" 
-              className="ml-4 btn-secondary button-shine flex items-center space-x-2"
+              className={`ml-4 px-6 py-2 rounded-full ${
+                isDarkBackground && !isScrolled
+                  ? 'bg-white text-black hover:bg-white/90'
+                  : 'bg-black text-white hover:bg-black/90'
+              } transition-all`}
             >
-              <Coffee size={18} />
-              <span>Let's Talk</span>
+              Let's Talk
             </Link>
           </nav>
           
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary"
+            className={`md:hidden p-2 rounded-md transition-colors focus:outline-none ${
+              isDarkBackground && !isScrolled 
+                ? 'text-white hover:bg-white/10' 
+                : 'text-gray-800 hover:bg-gray-100'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -86,16 +103,21 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-md animate-fade-in">
           <nav className="flex flex-col space-y-2 p-4 max-w-7xl mx-auto">
-            <NavLink to="/" className="px-4 py-3">Home</NavLink>
-            <NavLink to="/about" className="px-4 py-3">About</NavLink>
-            <NavLink to="/services" className="px-4 py-3">Services</NavLink>
-            <NavLink to="/portfolio" className="px-4 py-3">Portfolio</NavLink>
-            <NavLink to="/contact" className="px-4 py-3">Contact</NavLink>
+            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+              <Link
+                key={item}
+                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                className="px-4 py-3 text-gray-800 hover:text-black"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
             <Link 
               to="/contact" 
-              className="mt-4 btn-secondary w-full flex justify-center items-center space-x-2"
+              className="mt-4 bg-black text-white px-6 py-3 rounded-full flex justify-center items-center space-x-2"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <Coffee size={18} />
               <span>Let's Talk</span>
             </Link>
           </nav>

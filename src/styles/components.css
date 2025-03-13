@@ -1,0 +1,34 @@
+/* Add these styles to ensure navbar contrast is maintained */
+
+/* Transparent navbar with light text for dark backgrounds */
+.navbar-transparent-dark {
+  background-color: transparent;
+  color: white;
+}
+
+/* White navbar with dark text for light backgrounds */
+.navbar-white {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  backdrop-filter: blur(10px);
+}
+
+/* Ensure buttons have proper contrast */
+.navbar-button-light {
+  background-color: white;
+  color: black;
+}
+
+.navbar-button-dark {
+  background-color: black;
+  color: white;
+}
+
+/* For debugging - visually see when backgrounds change */
+.debug-bg-dark {
+  border-left: 3px solid red;
+}
+
+.debug-bg-light {
+  border-left: 3px solid blue;
+}

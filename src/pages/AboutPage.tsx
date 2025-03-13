@@ -86,8 +86,8 @@ const AboutPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Alex Johnson",
-                  role: "Founder & CEO",
+                  name: "Shamila Pramuditha",
+                  role: "CEO",
                   image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300&h=300"
                 },
                 {
