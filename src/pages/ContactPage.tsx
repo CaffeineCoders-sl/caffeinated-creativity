@@ -21,7 +21,7 @@ const ContactPage = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [companyName, setCompanyName] = useState('');
-  const [selectedService, setSelectedService] = useState('');
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [message, setMessage] = useState('');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState('');
@@ -121,7 +121,7 @@ const ContactPage = () => {
     e.preventDefault();
     
     // Form validation
-    if (!name || !email || !message || !selectedService) {
+    if (!name || !email || !message || selectedServices.length === 0) {
       setError('Please fill in all required fields.');
       return;
     }
@@ -152,7 +152,7 @@ const ContactPage = () => {
       from_email: email,
       phone: phone || 'Not provided',
       company: companyName || 'Not provided',
-      service: getServiceNameById(selectedService),
+      service: selectedServices.length ? selectedServices.map(s => getServiceNameById(s)).join(', ') : 'Not specified',
       message: message,
       meeting_date: meetingDateString,
       meeting_time: selectedTime || 'Not specified'
@@ -174,7 +174,7 @@ const ContactPage = () => {
         setEmail('');
         setPhone('');
         setCompanyName('');
-        setSelectedService('');
+        setSelectedServices([]);
         setMessage('');
         setSelectedDate(null);
         setSelectedTime('');
@@ -495,24 +495,27 @@ const ContactPage = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-3">Service Needed *</label>
                         <div className="space-y-3">
                           {/* Visible selected service */}
-                          {selectedService && (
-                            <motion.div 
-                              initial={{ opacity: 0, scale: 0.95 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              className="flex items-center justify-between mb-2 p-3 bg-black text-white rounded-lg"
-                            >
-                              <div className="flex items-center gap-2">
-                                {serviceOptions.find(s => s.id === selectedService)?.icon}
-                                <span className="font-medium">{getServiceNameById(selectedService)}</span>
-                              </div>
-                              <button 
-                                type="button"
-                                className="text-white/70 hover:text-white"
-                                onClick={() => setSelectedService('')}
+                          {selectedServices.length > 0 && (
+                            selectedServices.map(serviceId => (
+                              <motion.div 
+                                key={serviceId}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="flex items-center justify-between mb-2 p-3 bg-black text-white rounded-lg"
                               >
-                                <Check size={18} />
-                              </button>
-                            </motion.div>
+                                <div className="flex items-center gap-2">
+                                  {serviceOptions.find(s => s.id === serviceId)?.icon}
+                                  <span className="font-medium">{getServiceNameById(serviceId)}</span>
+                                </div>
+                                <button 
+                                  type="button"
+                                  className="text-white/70 hover:text-white"
+                                  onClick={() => setSelectedServices(selectedServices.filter(s => s !== serviceId))}
+                                >
+                                  <Check size={18} />
+                                </button>
+                              </motion.div>
+                            ))
                           )}
 
                           {/* Services grid - updated with monochrome styling */}
@@ -521,9 +524,15 @@ const ContactPage = () => {
                               <motion.button
                                 key={service.id}
                                 type="button"
-                                onClick={() => setSelectedService(service.id)}
+                                onClick={() => {
+                                  if(selectedServices.includes(service.id)) {
+                                    setSelectedServices(selectedServices.filter(id => id !== service.id));
+                                  } else {
+                                    setSelectedServices([...selectedServices, service.id]);
+                                  }
+                                }}
                                 className={`flex flex-col items-center text-center p-4 border rounded-lg transition-all ${
-                                  selectedService === service.id 
+                                  selectedServices.includes(service.id) 
                                     ? 'border-black bg-black/5 shadow-md' 
                                     : 'border-gray-200 hover:border-gray-300 hover:shadow'
                                 }`}
@@ -531,7 +540,7 @@ const ContactPage = () => {
                                 whileTap={{ scale: 0.98 }}
                               >
                                 <div className={`w-12 h-12 mb-3 rounded-full ${
-                                  selectedService === service.id 
+                                  selectedServices.includes(service.id) 
                                     ? 'bg-black text-white' 
                                     : 'bg-gray-100 text-black'
                                 } flex items-center justify-center`}>
@@ -545,9 +554,15 @@ const ContactPage = () => {
                             {/* Other option */}
                             <motion.button
                               type="button"
-                              onClick={() => setSelectedService('other')}
+                              onClick={() => {
+                                if(selectedServices.includes('other')) {
+                                  setSelectedServices(selectedServices.filter(id => id !== 'other'));
+                                } else {
+                                  setSelectedServices([...selectedServices, 'other']);
+                                }
+                              }}
                               className={`flex flex-col items-center text-center p-4 border rounded-lg transition-all ${
-                                selectedService === 'other' 
+                                selectedServices.includes('other') 
                                   ? 'border-black bg-black/5 shadow-md' 
                                   : 'border-gray-200 hover:border-gray-300 hover:shadow'
                               }`}
@@ -555,7 +570,7 @@ const ContactPage = () => {
                               whileTap={{ scale: 0.98 }}
                             >
                               <div className={`w-12 h-12 mb-3 rounded-full ${
-                                selectedService === 'other'
+                                selectedServices.includes('other')
                                   ? 'bg-black text-white'
                                   : 'bg-gray-100 text-black'
                               } flex items-center justify-center`}>
@@ -570,7 +585,7 @@ const ContactPage = () => {
                       
                       {/* Custom service field appears when "Other" is selected */}
                       <AnimatePresence>
-                        {selectedService === 'other' && (
+                        {selectedServices.includes('other') && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
