@@ -43,11 +43,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkBackground = false, isScrolled = 
         <div className="flex justify-between items-center">
           {/* Logo - Text Only */}
           <Link to="/" className="flex items-center space-x-2 group">
-          <div className="w-10 h-10 overflow-hidden rounded-full bg-gray-100 transition-all duration-300 group-hover:shadow-lg border border-gray-200">
+          <div className="w-18 h-16 overflow-hidden rounded-lg bg-gray-100 transition-all duration-300 group-hover:shadow-lg border border-gray-200">
                 <img 
                   src="/lovable-uploads/5c9e8331-194f-4d58-8b01-bb4dbb6018a7.png" 
                   alt="CaffeineCoders Logo" 
-                  className="w-full h-full object-cover scale-[0.7] transform group-hover:scale-[0.75] transition-transform duration-300"
+                  className="w-full h-full object-cover transition-transform duration-300"
                 />
               </div>
             <span className={`text-xl font-bold tracking-tight ${textColor}`}>
