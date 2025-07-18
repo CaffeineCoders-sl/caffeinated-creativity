@@ -483,7 +483,7 @@ const Contact = () => {
               ref={projectsRef}
             >
               <p className="text-5xl font-bold mb-2">{projectsCount}+</p>
-              <p className="text-gray-600">Projects Completed</p>
+              <p className="text-gray-600">Happy Clients</p>
             </motion.div>
               
             <motion.div 

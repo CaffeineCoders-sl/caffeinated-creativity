@@ -142,13 +142,6 @@ const Footer = () => {
           <motion.div variants={fadeInUpVariants}>
             <h3 className="text-lg font-bold mb-4 text-black">Contact Us</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <Coffee className="mr-2 h-5 w-5 mt-0.5 text-secondary" />
-                <span className="text-gray-600">
-                  123 Tech Brew Lane<br />
-                  San Francisco, CA 94105
-                </span>
-              </li>
               <li>
                 <a 
                   href="mailto:hello@caffeinecoders.com"
@@ -160,11 +153,11 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="tel:+11234567890"
+                  href="tel:+94767319134"
                   className="flex items-center text-gray-600 hover:text-secondary transition-colors"
                 >
                   <Phone className="mr-2 h-5 w-5 text-secondary" />
-                  +1 (123) 456-7890
+                  +94 76 731 9134
                 </a>
               </li>
             </ul>
@@ -176,12 +169,6 @@ const Footer = () => {
             <p className="text-gray-500 text-sm">
               &copy; {currentYear} CaffeineCoders. All rights reserved.
             </p>
-            
-            <div className="flex items-center mt-4 md:mt-0">
-              <span className="text-gray-500 text-sm flex items-center">
-                Crafted with <Heart className="mx-1 h-4 w-4 text-secondary animate-pulse-subtle" /> and lots of code
-              </span>
-            </div>
           </div>
         </div>
       </div>

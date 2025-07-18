@@ -103,7 +103,7 @@ const About = () => {
         className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 py-12 rounded-xl bg-gray-50 backdrop-blur-sm"
       >
         {[
-          { value: 120, label: "Projects Completed" },
+          { value: 120, label: "Happy Clients" },
           { value: 45, label: "Happy Clients" },
           { value: 6, label: "Years Experience" },
           { value: 15, label: "Team Members" },
