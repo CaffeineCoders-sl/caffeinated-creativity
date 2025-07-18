@@ -96,8 +96,8 @@ function useAnimatedCounter(value: number, duration: number = 1) {
       requestAnimationFrame(step);
     }
   }, [inView, value, duration]);
+  
   return { ref, count };
-  return { ref: inView.ref, count };
 }
 
 const Contact = () => {

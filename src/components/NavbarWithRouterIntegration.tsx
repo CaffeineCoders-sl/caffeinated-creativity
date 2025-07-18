@@ -9,8 +9,8 @@ const NavbarWithRouterIntegration = () => {
   
   // Check if current page has dark background
   useEffect(() => {
-    // Services page has dark hero section
-    setIsDarkBackground(location.pathname === '/services');
+    // Services page and Contact page both have dark hero sections
+    setIsDarkBackground(location.pathname === '/services' || location.pathname === '/contact');
     
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
