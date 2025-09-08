@@ -114,56 +114,48 @@ const Index = () => {
       icon: <Building2 size={32} />,
       name: "Finance & Banking",
       description: "Digital-first banking solutions focusing on security and customer experience.",
-      impact: "Our fintech innovations reduce operational costs by 40% and increase customer satisfaction scores by 60%.",
       color: "from-blue-500 to-blue-700"
     },
     {
       icon: <ShoppingBag size={32} />,
       name: "Retail & E-commerce",
       description: "Omnichannel experiences that merge online and offline shopping journeys.",
-      impact: "Clients using our solutions report 32% higher conversion rates and 45% improved customer retention.",
       color: "from-emerald-500 to-teal-700"
     },
     {
       icon: <HeartPulse size={32} />,
       name: "Healthcare",
       description: "Patient-centered digital platforms that modernize care delivery and management.",
-      impact: "Our healthcare systems reduce administrative burden by 53% while improving patient engagement metrics 3x.",
       color: "from-red-500 to-rose-700"
     },
     {
       icon: <Pill size={32} />,
       name: "Pharmaceuticals",
       description: "Digital transformation solutions for research, trials, and distribution networks.",
-      impact: "Our platforms have helped accelerate drug development cycles by 28% through intelligent data processing.",
       color: "from-purple-500 to-indigo-700"
     },
     {
       icon: <GraduationCap size={32} />,
       name: "Education",
       description: "Immersive learning environments that transform how knowledge is delivered and retained.",
-      impact: "Students using our digital learning tools show 34% better knowledge retention and 45% higher engagement.",
       color: "from-amber-500 to-orange-700"
     },
     {
       icon: <Plane size={32} />,
       name: "Travel & Hospitality",
       description: "Experience-enhancing platforms that personalize travel from booking to return.",
-      impact: "Our solutions have helped partners increase direct bookings by 57% and boost ancillary revenue by 29%.",
       color: "from-cyan-500 to-sky-700"
     },
     {
       icon: <Factory size={32} />,
       name: "Manufacturing",
       description: "Smart factory systems integrating IoT and AI for optimized production.",
-      impact: "Manufacturers implementing our solutions report 38% improved efficiency and 27% reduced maintenance costs.",
       color: "from-slate-600 to-slate-800"
     },
     {
       icon: <Zap size={32} />,
       name: "Energy & Utilities",
       description: "Digital transformation solutions for smart grids and renewable energy management.",
-      impact: "Our platforms enable 24% better resource allocation and have helped reduce carbon footprints by 31%.",
       color: "from-green-500 to-emerald-700"
     },
   ];
@@ -786,11 +778,7 @@ const Index = () => {
                     <h3 className="text-xl font-bold mb-2">{industry.name}</h3>
                     <p className="text-gray-600 mb-4">{industry.description}</p>
                     
-                    <div className="mt-auto">
-                      <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-black">
-                        <p className="text-sm text-gray-700 italic">{industry.impact}</p>
-                      </div>
-                    </div>
+                    <div className="mt-auto" />
                   </div>
                 </div>
               </motion.div>
