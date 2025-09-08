@@ -476,7 +476,7 @@ const ServicesPage: React.FC = () => {
                 onHoverStart={() => setHoveredService(index)}
                 onHoverEnd={() => setHoveredService(null)}
               >
-                <Link to={service.link} className="block h-full">
+                <div className="block h-full">
                   <motion.div 
                     className="bg-white rounded-2xl overflow-hidden h-full shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col relative z-10"
                     whileHover={{ scale: 1.02 }}
@@ -496,19 +496,19 @@ const ServicesPage: React.FC = () => {
                       <p className="text-gray-600 mb-6">{service.description}</p>
                       
                       <div className="mt-auto flex items-center text-black font-medium">
-                        <span>Learn more</span>
+                   
                         <motion.div
                           className="ml-2 w-4 h-4"
                           initial={false}
                           animate={{ x: 0 }}
                           whileHover={{ x: 5 }}
                         >
-                          <ArrowRight />
+                         
                         </motion.div>
                       </div>
                     </div>
                   </motion.div>
-                </Link>
+                </div>
               </motion.div>
             ))}
           </div>
