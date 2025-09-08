@@ -90,25 +90,35 @@ const ContactPage = () => {
   // FAQ data
   const faqs = [
     {
-      question: "What types of projects do you specialize in?",
-      answer: "We specialize in web development, mobile applications, e-commerce solutions, UI/UX design, AI & ML integration, and comprehensive digital transformation projects. Our team has expertise across multiple industries including finance, healthcare, retail, and entertainment."
+      question: "What services do you offer?",
+      answer:
+        "We offer a comprehensive range of digital services including web design, web development, mobile app development, UI/UX design, graphic design, digital marketing, and content creation. Our team specializes in creating custom solutions tailored to your specific business needs.",
     },
     {
-      question: "How much does a typical project cost?",
-      answer: "Project costs vary widely depending on requirements, complexity, and scope. Our web development projects typically start at $5,000, while more complex applications or e-commerce solutions may range from $15,000 to $100,000+. We provide detailed estimates after understanding your specific needs."
+      question: "How long does it take to complete a project?",
+      answer:
+        "Project timelines vary depending on the scope and complexity. A simple website might take 2-4 weeks, while a complex web application could take 2-3 months. During our initial consultation, we'll provide you with a detailed timeline based on your specific requirements.",
     },
     {
-      question: "What is your typical project timeline?",
-      answer: "Our project timelines depend on scope and complexity. Simple websites may take 4-6 weeks, while complex applications typically require 3-6 months. We work with you to establish realistic milestones and keep you updated throughout the development process."
+      question: "Do you offer ongoing support after launch?",
+      answer:
+        "Yes, we provide comprehensive post-launch support and maintenance services. We offer various support packages that include regular updates, security monitoring, performance optimization, and content updates to ensure your digital product continues to perform optimally.",
     },
     {
-      question: "Do you offer ongoing support and maintenance?",
-      answer: "Yes, we offer various support and maintenance packages to ensure your project remains up-to-date, secure, and functioning optimally. Our support includes regular updates, security monitoring, performance optimization, and technical assistance."
+      question: "How do you handle project communication?",
+      answer:
+        "We believe in transparent and regular communication. Depending on your preference, we set up weekly or bi-weekly progress meetings, provide access to our project management tools, and assign a dedicated project manager who serves as your main point of contact throughout the development process.",
     },
     {
-      question: "How do we get started working together?",
-      answer: "Getting started is easy! Simply fill out our contact form with details about your project. Our team will reach out within 24-48 business hours to schedule an initial consultation. During this call, we'll discuss your goals, requirements, and answer any questions you may have."
-    }
+      question: "What is your pricing structure?",
+      answer:
+        "Our pricing is project-based and depends on the scope, complexity, and timeline. We provide detailed quotes after understanding your requirements through an initial consultation. We also offer flexible payment schedules, typically with an initial deposit and milestone-based payments.",
+    },
+    {
+      question: "Can you work with existing systems or designs?",
+      answer:
+        "Absolutely. We have extensive experience integrating with existing systems and working with established design guidelines. Whether you need to enhance an existing website, integrate with your CRM, or maintain brand consistency, our team can adapt to your current infrastructure and requirements.",
+    },
   ];
 
   // Toggle FAQ expansion
