@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const projects = [
@@ -11,15 +11,15 @@ const projects = [
     description: "Mobile application for personal finance tracking with expense categorization and budget planning features.",
     tags: ["Mobile", "React Native", "Firebase"],
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500",
-    link: "/portfolio/finance-app"
+  // link removed: products are shown but not linked
   },
   {
     id: 2,
     title: "E-Commerce Platform",
     description: "A fully responsive online shopping platform with advanced product filtering and secure checkout.",
     tags: ["Web Development", "React", "Node.js"],
-    image: "https://images.unsplash.com/photo-1561997968-aa846c2bf9ba?auto=format&fit=crop&q=80&w=800&h=500",
-    link: "/portfolio/ecommerce"
+  // use placeholder image (SVGs removed)
+  image: "public/images/ecommerce.jpg",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const projects = [
     description: "Interactive analytics dashboard for healthcare providers to monitor patient data and outcomes.",
     tags: ["Data Visualization", "Vue.js", "D3.js"],
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800&h=500",
-    link: "/portfolio/healthcare"
+  // link removed: products are shown but not linked
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const projects = [
     description: "Intelligent customer service chatbot that leverages machine learning to provide accurate responses.",
     tags: ["AI", "Python", "TensorFlow"],
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800&h=500",
-    link: "/portfolio/ai-chatbot"
+  // link removed: products are shown but not linked
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ const projects = [
     description: "Comprehensive task management and productivity application with team collaboration features.",
     tags: ["SaaS", "Angular", "MongoDB"],
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800&h=500",
-    link: "/portfolio/productivity-suite"
+  // link removed: products are shown but not linked
   },
   {
     id: 6,
@@ -51,7 +51,33 @@ const projects = [
     description: "Property listing and management platform with virtual tours and advanced search capabilities.",
     tags: ["Web App", "Next.js", "GraphQL"],
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=500",
-    link: "/portfolio/real-estate"
+  // link removed: products are shown but not linked
+  }
+  ,
+  {
+    id: 7,
+    title: "Automation Applications",
+    description: "Custom automation and workflow applications to streamline business processes and reduce manual work.",
+    tags: ["Automation", "Node.js", "Integrations"],
+  // use placeholder image (SVGs removed)
+  image: "public/images/automation.jpg",
+  },
+  {
+    id: 8,
+    title: "Learning Management System (LMS)",
+    description: "Scalable LMS platforms for delivering online courses, tracking progress, and managing learners.",
+    tags: ["Education", "LMS", "React"],
+    image: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=800&h=500",
+    // link removed
+  }
+  ,
+  {
+    id: 9,
+    title: "POS Systems",
+    description: "Point-of-sale solutions for retail and hospitality, including inventory, payments, and reporting features.",
+    tags: ["POS", "Retail", "Payments"],
+  // use placeholder image (SVGs removed)
+  image: "public/images/pos.jpg",
   }
 ];
 
@@ -200,13 +226,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
         
-        <Link 
-          to={project.link} 
-          className="inline-flex items-center text-secondary font-medium hover:underline"
-        >
-          <span>View Project</span>
-          <ExternalLink className={`ml-1 h-4 w-4 transition-transform duration-300 ${isHovered ? 'translate-x-1 translate-y-[-2px]' : ''}`} />
-        </Link>
+  {/* project action removed - cards are static and not linked */}
       </div>
       
       {/* Hover effect border */}

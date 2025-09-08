@@ -9,24 +9,52 @@ const projects = [
     title: "E-Commerce Platform",
     description: "A fully responsive online shopping platform with advanced product filtering and secure checkout.",
     tags: ["Web Development", "React", "Node.js"],
-    image: "https://images.unsplash.com/photo-1561997968-aa846c2bf9ba?auto=format&fit=crop&q=80&w=500&h=300",
-    link: "/portfolio/ecommerce"
+  // use placeholder image (SVGs removed)
+  image: "public/images/ecommerce.jpg",
+  // link removed: products are shown but not linked
   },
   {
     id: 2,
     title: "Finance Management App",
     description: "Mobile application for personal finance tracking with expense categorization and budget planning.",
     tags: ["Mobile", "React Native", "Firebase"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=500&h=300",
-    link: "/portfolio/finance-app"
+  image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=500&h=300",
+  // link removed: products are shown but not linked
   },
   {
     id: 3,
     title: "Healthcare Dashboard",
     description: "Interactive analytics dashboard for healthcare providers to monitor patient data and outcomes.",
     tags: ["Data Visualization", "Vue.js", "D3.js"],
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=500&h=300",
-    link: "/portfolio/healthcare"
+  image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=500&h=300",
+  // link removed: products are shown but not linked
+  }
+  ,
+  {
+    id: 4,
+    title: "Automation Applications",
+    description: "Custom automation and workflow applications to streamline business processes and reduce manual work.",
+    tags: ["Automation", "Node.js", "Integrations"],
+  // use placeholder image (SVGs removed)
+  image: "public/images/automation.jpg",
+    // link removed
+  },
+  {
+    id: 5,
+    title: "Learning Management System (LMS)",
+    description: "Scalable LMS platforms for delivering online courses, tracking progress, and managing learners.",
+    tags: ["Education", "LMS", "React"],
+    image: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=500&h=300",
+    // link removed
+  },
+  {
+    id: 6,
+    title: "POS Systems",
+    description: "Point-of-sale solutions for retail and hospitality, including inventory, payments, and reporting features.",
+    tags: ["POS", "Retail", "Payments"],
+  // use placeholder image (SVGs removed)
+  image: "public/images/pos.jpg",
+    // link removed
   }
 ];
 
@@ -99,13 +127,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
         
-        <Link 
-          to={project.link} 
-          className="inline-flex items-center text-secondary font-medium hover:underline"
-        >
-          <span>View Project</span>
-          <ArrowRight className={`ml-1 h-4 w-4 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
-        </Link>
+  {/* project action removed - cards are static and not linked */}
       </div>
     </div>
   );
