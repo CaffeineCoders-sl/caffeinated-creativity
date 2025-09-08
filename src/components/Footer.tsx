@@ -148,7 +148,7 @@ const Footer = () => {
                   className="flex items-center text-gray-600 hover:text-secondary transition-colors"
                 >
                   <Mail className="mr-2 h-5 w-5 text-secondary" />
-                  hello@caffeinecoders.com
+                 caffeinecoders.sl@gmail.com
                 </a>
               </li>
               <li>
