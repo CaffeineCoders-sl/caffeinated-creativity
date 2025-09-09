@@ -1,0 +1,11 @@
+# Netlify configuration for Vite app
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Note: environment variables (EmailJS keys) should be set in the Netlify UI
+# Do NOT store secrets in this file. Set the following in Site settings → Build & deploy → Environment:
+# VITE_EMAILJS_PUBLIC_KEY
+# VITE_EMAILJS_SERVICE_ID
+# VITE_EMAILJS_TEMPLATE_ID
+# RECEIVER_EMAIL (optional)

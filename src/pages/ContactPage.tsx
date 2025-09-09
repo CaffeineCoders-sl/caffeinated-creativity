@@ -38,7 +38,13 @@ const ContactPage = () => {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    // Use Vite environment variables: VITE_EMAILJS_PUBLIC_KEY
+    const publicKey = (import.meta as any).env?.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.warn('EmailJS public key not found. Set VITE_EMAILJS_PUBLIC_KEY in your .env file.');
+    }
   }, []);
 
   // Enhanced services array with icons and descriptions - removed colors
@@ -168,12 +174,17 @@ const ContactPage = () => {
       meeting_time: selectedTime || 'Not specified'
     };
     
-    // Send email using EmailJS
-    emailjs.send(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-      'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-      templateParams
-    )
+    // Send email using EmailJS (service and template IDs from Vite env)
+    const serviceId = (import.meta as any).env?.VITE_EMAILJS_SERVICE_ID;
+    const templateId = (import.meta as any).env?.VITE_EMAILJS_TEMPLATE_ID;
+
+    if (!serviceId || !templateId) {
+      setError('Email service not configured. Please set VITE_EMAILJS_SERVICE_ID and VITE_EMAILJS_TEMPLATE_ID in your .env file.');
+      setSubmitting(false);
+      return;
+    }
+
+    emailjs.send(serviceId, templateId, templateParams)
       .then((response) => {
         console.log('Email sent successfully:', response);
         setSubmitting(false);
