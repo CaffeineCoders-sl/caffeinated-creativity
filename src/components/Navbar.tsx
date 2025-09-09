@@ -46,8 +46,9 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkBackground = false, isScrolled = 
           <div className="w-18 h-16 overflow-hidden rounded-lg bg-gray-100 transition-all duration-300 group-hover:shadow-lg border border-gray-200">
                 <img 
                   src="/lovable-uploads/5c9e8331-194f-4d58-8b01-bb4dbb6018a7.png" 
-                  alt="CaffeineCoders Logo" 
+                  alt="CaffeineCoders company logo, a creative tech brand" 
                   className="w-full h-full object-cover transition-transform duration-300"
+                  width="72" height="64" loading="eager"
                 />
               </div>
             <span className={`text-xl font-bold tracking-tight ${textColor}`}>

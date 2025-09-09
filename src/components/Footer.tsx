@@ -39,8 +39,9 @@ const Footer = () => {
               <div className="w-10 h-10 overflow-hidden rounded-full bg-gray-100 transition-all duration-300 group-hover:shadow-lg border border-gray-200">
                 <img 
                   src="/lovable-uploads/5c9e8331-194f-4d58-8b01-bb4dbb6018a7.png" 
-                  alt="CaffeineCoders Logo" 
+                  alt="CaffeineCoders company logo, a creative tech brand" 
                   className="w-full h-full object-cover scale-[0.7] transform group-hover:scale-[0.75] transition-transform duration-300"
+                  width="40" height="40" loading="lazy"
                 />
               </div>
               <span className="text-xl font-bold tracking-tight">

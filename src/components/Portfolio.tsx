@@ -10,7 +10,7 @@ const projects = [
     description: "A fully responsive online shopping platform with advanced product filtering and secure checkout.",
     tags: ["Web Development", "React", "Node.js"],
   // use placeholder image (SVGs removed)
-  image: "public/images/ecommerce.jpg",
+  image: "/images/ecommerce.jpg",
   // link removed: products are shown but not linked
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     description: "Custom automation and workflow applications to streamline business processes and reduce manual work.",
     tags: ["Automation", "Node.js", "Integrations"],
   // use placeholder image (SVGs removed)
-  image: "public/images/automation.jpg",
+  image: "/images/automation.jpg",
     // link removed
   },
   {
@@ -53,7 +53,7 @@ const projects = [
     description: "Point-of-sale solutions for retail and hospitality, including inventory, payments, and reporting features.",
     tags: ["POS", "Retail", "Payments"],
   // use placeholder image (SVGs removed)
-  image: "public/images/pos.jpg",
+  image: "/images/pos.jpg",
     // link removed
   }
 ];
@@ -92,7 +92,6 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  
   return (
     <div
       className="group relative overflow-hidden rounded-lg bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg"
@@ -100,16 +99,15 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative h-48 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out"
-          style={{
-            backgroundImage: `url(${project.image})`,
-            transform: isHovered ? 'scale(1.05)' : 'scale(1)'
-          }}
+        <img
+          src={project.image}
+          alt={project.title + ' - ' + project.description}
+          className="w-full h-48 object-cover rounded-t-lg mb-0 transition-transform duration-700 ease-in-out"
+          style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
+          width="500" height="300" loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      
       <div className="p-5">
         <div className="flex flex-wrap gap-2 mb-3">
           {project.tags.map((tag, index) => (
@@ -118,16 +116,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             </span>
           ))}
         </div>
-        
         <h3 className="text-xl font-bold mb-2 text-black transition-colors group-hover:text-secondary">
           {project.title}
         </h3>
-        
         <p className="text-gray-600 mb-4">
           {project.description}
         </p>
-        
-  {/* project action removed - cards are static and not linked */}
+        {/* project action removed - cards are static and not linked */}
       </div>
     </div>
   );
