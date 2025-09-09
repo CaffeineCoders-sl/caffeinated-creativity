@@ -93,6 +93,19 @@ const ContactPage = () => {
     return service ? service.name : id;
   };
 
+  // Format 24-hour time string (HH:mm) into 12-hour with AM/PM
+  const formatTimeTo12Hour = (time24: string) => {
+    if (!time24) return 'Not specified';
+    const parts = time24.split(':');
+    if (parts.length === 0) return time24;
+    const hour = parseInt(parts[0], 10);
+    const minute = parts[1] || '00';
+    if (Number.isNaN(hour)) return time24;
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = ((hour + 11) % 12) + 1; // converts 0->12,13->1 etc.
+    return `${hour12}:${minute} ${ampm}`;
+  };
+
   // FAQ data
   const faqs = [
     {
@@ -162,6 +175,8 @@ const ContactPage = () => {
       : 'Not specified';
 
     // Prepare template parameters
+    const meetingTimeString = selectedTime ? formatTimeTo12Hour(selectedTime) : 'Not specified';
+
     const templateParams = {
       to_email: 'caffeinecoders.sl@gmail.com',
       from_name: name,
@@ -171,7 +186,7 @@ const ContactPage = () => {
       service: selectedServices.length ? selectedServices.map(s => getServiceNameById(s)).join(', ') : 'Not specified',
       message: message,
       meeting_date: meetingDateString,
-      meeting_time: selectedTime || 'Not specified'
+      meeting_time: meetingTimeString
     };
     
     // Send email using EmailJS (service and template IDs from Vite env)
