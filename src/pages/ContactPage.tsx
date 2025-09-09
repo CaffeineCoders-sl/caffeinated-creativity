@@ -22,6 +22,7 @@ const ContactPage = () => {
   const [phone, setPhone] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [customService, setCustomService] = useState('');
   const [message, setMessage] = useState('');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState('');
@@ -89,6 +90,7 @@ const ContactPage = () => {
 
   // Function to get service name from selected ID
   const getServiceNameById = (id: string) => {
+    if (id === 'other') return customService ? customService : 'Other';
     const service = serviceOptions.find(service => service.id === id);
     return service ? service.name : id;
   };
@@ -164,6 +166,12 @@ const ContactPage = () => {
     
     setError(null);
     setSubmitting(true);
+    // If 'other' selected, ensure the customService value was provided
+    if (selectedServices.includes('other') && !customService.trim()) {
+      setError('Please describe the custom service you selected.');
+      setSubmitting(false);
+      return;
+    }
     
     // Prepare submission data
     const meetingDateString = selectedDate 
@@ -561,8 +569,9 @@ const ContactPage = () => {
                                 key={service.id}
                                 type="button"
                                 onClick={() => {
-                                  if(selectedServices.includes(service.id)) {
+                                  if (selectedServices.includes(service.id)) {
                                     setSelectedServices(selectedServices.filter(id => id !== service.id));
+                                    if (service.id === 'other') setCustomService('');
                                   } else {
                                     setSelectedServices([...selectedServices, service.id]);
                                   }
@@ -591,8 +600,9 @@ const ContactPage = () => {
                             <motion.button
                               type="button"
                               onClick={() => {
-                                if(selectedServices.includes('other')) {
+                                if (selectedServices.includes('other')) {
                                   setSelectedServices(selectedServices.filter(id => id !== 'other'));
+                                  setCustomService('');
                                 } else {
                                   setSelectedServices([...selectedServices, 'other']);
                                 }
@@ -621,7 +631,7 @@ const ContactPage = () => {
                       
                       {/* Custom service field appears when "Other" is selected */}
                       <AnimatePresence>
-                        {selectedServices.includes('other') && (
+                          {selectedServices.includes('other') && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
@@ -635,8 +645,11 @@ const ContactPage = () => {
                               type="text"
                               id="customService"
                               name="customService"
+                              value={customService}
+                              onChange={(e) => setCustomService(e.target.value)}
                               className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black transition-colors"
                               placeholder="Describe the service you need"
+                              required={selectedServices.includes('other')}
                             />
                           </motion.div>
                         )}
