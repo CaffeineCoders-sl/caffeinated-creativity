@@ -197,6 +197,52 @@ const Services = ({ initialCategory = 'all', showFilter = true }: ServicesProps)
   
   // Define services - MOVED UP before filteredServices is called
   const services = [
+    // High-level, client-focused service entries
+    {
+      icon: <Code size={24} />,
+      title: "Web & Mobile Apps",
+      description: "Custom web and mobile applications built to solve real business problems and drive revenue.",
+      features: ["Responsive web apps", "Native & cross-platform mobile", "API integrations", "Design systems"],
+      benefits: ["Faster time-to-market", "Improved customer engagement", "Cross-device consistency"],
+      color: "#1f2937",
+      category: "web"
+    },
+    {
+      icon: <Layout size={24} />,
+      title: "SaaS Platforms",
+      description: "Design and build scalable software-as-a-service products with subscription, billing and multi-tenant support.",
+      features: ["Multi-tenant architecture", "Subscription billing", "Analytics & reporting", "Scalable infra"],
+      benefits: ["Recurring revenue models", "Easy scale for growth", "Built-in analytics for decision making"],
+      color: "#4f46e5",
+      category: "web"
+    },
+    {
+      icon: <TrendingUp size={24} />,
+      title: "E-Commerce Solutions",
+      description: "End-to-end online store experiences including checkout, payments, and fulfillment integrations.",
+      features: ["Fast checkout flows", "Payment gateway integration", "Inventory sync", "Performance optimization"],
+      benefits: ["Higher conversion rates", "Reliable order processing", "Improved customer loyalty"],
+      color: "#059669",
+      category: "web"
+    },
+    {
+      icon: <Camera size={24} />,
+      title: "Real Estate Systems",
+      description: "Listings, owner dashboards, and property management tools tailored for real estate businesses.",
+      features: ["Property listing management", "Owner & agent portals", "Search & filters", "Secure document handling"],
+      benefits: ["Streamlined listing workflows", "Better lead capture", "Improved broker/owner experience"],
+      color: "#b91c1c",
+      category: "web"
+    },
+    {
+      icon: <Zap size={24} />,
+      title: "AI & Automation",
+      description: "Integrate machine learning and automation to reduce manual work and unlock new capabilities.",
+      features: ["Process automation", "NLP & computer vision", "Recommendation systems", "Custom ML pipelines"],
+      benefits: ["Operational cost savings", "Smarter user experiences", "Faster insights from data"],
+      color: "#0ea5e9",
+      category: "ai"
+    },
     {
       icon: <Code size={24} />,
       title: "Web Development",

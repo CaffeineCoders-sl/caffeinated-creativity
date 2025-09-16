@@ -117,9 +117,12 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto">
           {/* Full-width hero content - with extra space above the heading */}
           <div className="max-w-3xl mx-auto lg:max-w-none mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold text-black mb-12 leading-tight">
-              Engineering exceptional <span className="text-black">digital experiences</span>
+            <h1 className="text-5xl sm:text-6xl font-bold text-black mb-6 leading-tight">
+              We build software that turns ideas into revenue.
             </h1>
+            <p className="text-lg md:text-xl text-black/80 max-w-2xl mb-8">
+              From eCommerce to Real Estate SaaS, CaffeineCoders delivers custom software and digital products that help businesses grow fast.
+            </p>
             
             {/* Highly innovative text layout with creative typography */}
             <div className="mb-20 relative">
@@ -156,7 +159,7 @@ const Hero = () => {
                     <span className="text-9xl absolute bottom-0 right-4 font-black text-black opacity-[0.03] leading-none">01</span>
                     <div className="relative z-10">
                       <h3 className="text-xl font-bold text-black mb-4 flex items-center">
-                        <span className="inline-block w-8 h-8 bg-black/80 text-white rounded-full text-xs flex items-center justify-center mr-2">01</span>
+                        <span className="w-8 h-8 bg-black/80 text-white rounded-full text-xs flex items-center justify-center mr-2">01</span>
                         Custom Software Development
                       </h3>
                       <p className="ml-10 text-black">
@@ -257,8 +260,9 @@ const Hero = () => {
                 Start Your Project
                 <ArrowRight size={18} />
               </Link>
-              <Link 
-                to="/portfolio" 
+              <Link
+                to="/portfolio"
+                aria-label="View our work"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border-2 border-black text-black rounded-md hover:bg-gray-50 transition-colors font-medium text-lg"
               >
                 View Our Work

@@ -4,6 +4,8 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
+import Pricing from '../components/Pricing';
+import SEO from '../components/SEO';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { 
   Code, 
@@ -265,6 +267,32 @@ const Index = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <SEO
+        title="Software Company in Colombo"
+        description="CaffeineCoders is a Colombo-based software company building custom web & mobile apps, SaaS platforms, eCommerce solutions and AI automation to help businesses grow."
+        url="https://caffeinecoders.dev/"
+        image="https://caffeinecoders.dev/og-image.png"
+        keywords={["software company Colombo","SaaS development Sri Lanka","custom software Sri Lanka","eCommerce development Colombo"]}
+        jsonLd={[{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "CaffeineCoders",
+          "image": "https://caffeinecoders.dev/og-image.png",
+          "@id": "https://caffeinecoders.dev/",
+          "url": "https://caffeinecoders.dev/",
+          "telephone": "+94-76-731-9134",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Colombo",
+            "addressLocality": "Colombo",
+            "addressRegion": "Western Province",
+            "postalCode": "10230",
+            "addressCountry": "LK"
+          },
+          "priceRange": "LKR",
+          "description": "Custom software, SaaS and AI development for startups and enterprises based in Colombo, Sri Lanka."
+        }]}
+      />
       <Hero />
       
       {/* Innovative Text Information Field - replacing simple layout */}
@@ -348,7 +376,7 @@ const Index = () => {
                     transition={{ duration: 1, delay: 0.3 }}
                   />
                 </span>{" "}
-                for Modern Businesses
+                for Modern Businesses — Software Company in Colombo
               </h2>
             </motion.div>
             
@@ -360,7 +388,7 @@ const Index = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               We combine technical expertise and creative thinking to deliver exceptional 
-              digital products that help businesses thrive in today's competitive landscape.
+              digital products that help businesses thrive in today's competitive landscape. Our team specialises in SaaS development in Sri Lanka, custom web & mobile apps, and AI automation.
             </motion.p>
           </motion.div>
 
@@ -483,177 +511,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Detailed Section with Beautiful UI */}
-      <section ref={detailsRef} className="py-32 bg-gradient-to-br from-black to-gray-900 text-white relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="noise-effect"></div>
-        </div>
-        
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-48 h-48 rounded-full bg-white/5"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: 'translate(-50%, -50%)',
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.2, 0.1],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 15 + Math.random() * 10,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-24">
-            <motion.div 
-              className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/70 backdrop-blur-sm space-x-2 mb-6"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Coffee size={16} />
-              <span className="text-sm tracking-wide">OUR MISSION</span>
-            </motion.div>
-            
-            <motion.h2 
-              className="text-5xl md:text-6xl font-bold mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              Brewing Digital Excellence
-            </motion.h2>
-            
-            <motion.p 
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              We blend creativity with technical expertise to craft digital solutions that captivate users and deliver measurable business results.
-            </motion.p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
-              <div className="relative z-10 overflow-hidden rounded-2xl">
-                <div className="aspect-video bg-gradient-to-br from-blue-600 to-violet-800 rounded-2xl p-8 flex items-center justify-center">
-                  <div className="relative w-full max-w-md">
-                    {/* Browser mockup */}
-                    <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
-                      <div className="bg-gray-100 px-4 py-2 flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <div className="w-full ml-2 bg-white rounded-full h-5"></div>
-                      </div>
-                      <div className="p-4">
-                        {/* Just visual elements */}
-                        <div className="h-4 bg-gray-200 rounded-full w-3/4 mb-3"></div>
-                        <div className="h-4 bg-gray-200 rounded-full w-1/2 mb-3"></div>
-                        <div className="h-20 bg-gray-100 rounded-lg w-full mb-3 flex items-center justify-center">
-                          <Code size={24} className="text-gray-400" />
-                        </div>
-                        <div className="h-4 bg-gray-200 rounded-full w-4/5 mb-3"></div>
-                        <div className="h-4 bg-gray-200 rounded-full w-2/3"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile mockup overlapped */}
-                    <div className="absolute -bottom-6 -right-6 w-1/3 bg-white rounded-2xl overflow-hidden shadow-2xl">
-                      <div className="bg-gray-900 px-2 py-1 flex justify-center">
-                        <div className="w-10 h-1 rounded-full bg-gray-700"></div>
-                      </div>
-                      <div className="p-2">
-                        <div className="h-2 bg-gray-200 rounded-full w-full mb-2"></div>
-                        <div className="h-2 bg-gray-200 rounded-full w-2/3 mb-2"></div>
-                        <div className="h-10 bg-gray-100 rounded-lg w-full mb-2 flex items-center justify-center">
-                          <Smartphone size={16} className="text-gray-400" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -left-8 -bottom-8 w-48 h-48 bg-gradient-to-br from-cyan-500 to-blue-700 rounded-full blur-3xl opacity-20"></div>
-              <div className="absolute -right-8 -top-8 w-48 h-48 bg-gradient-to-br from-purple-500 to-pink-700 rounded-full blur-3xl opacity-20"></div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <h3 className="text-3xl font-bold mb-8">Our Approach to Digital Excellence</h3>
-              
-              <div className="space-y-8">
-                {expertiseAreas.map((area, index) => (
-                  <motion.div 
-                    key={index}
-                    className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="flex items-start">
-                      <div className="mr-4 p-3 rounded-full bg-white/10 text-white">
-                        {area.icon}
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold mb-2">{area.title}</h4>
-                        <p className="text-gray-300 mb-3">{area.description}</p>
-                        <div className="text-sm bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium">
-                          {area.highlight}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            <Link 
-              to="/about" 
-              className="inline-flex items-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-colors"
-            >
-              <span>Learn More About Us</span>
-              <ArrowRight size={18} className="ml-2" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+
       
       {/* Process Section */}
       <section className="py-24 bg-white relative overflow-hidden">
@@ -802,6 +660,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Pricing Section */}
+      <Pricing />
     </motion.div>
   );
 };
